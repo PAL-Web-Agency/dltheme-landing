@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DL Theme — Landing page
 
-## Getting Started
+Trang giới thiệu dịch vụ làm website của DL Theme (Đắk Lắk). Next.js App Router + Tailwind CSS v4, toàn bộ trang được build tĩnh.
 
-First, run the development server:
+## Chạy ở máy
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Sửa nội dung
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Muốn sửa | File |
+| --- | --- |
+| SĐT, email, Zalo, mô tả SEO | `src/lib/site.ts` |
+| Danh sách mẫu (tên, ngành, số trang, ghi chú) | `src/data/templates.ts` |
+| Các bước làm, "Website nào cũng có", Hỏi đáp | `src/components/Sections.tsx` |
+| Tiêu đề lớn đầu trang | `src/components/Hero.tsx` |
+| Ảnh khi chia sẻ link (1200×630) | `src/app/opengraph-image.png` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Thêm mẫu mới
 
-## Learn More
+1. Đưa mẫu lên repo `html-templates` (GitHub Pages).
+2. Thêm 1 object vào `src/data/templates.ts` (slug = tên thư mục).
+3. Chụp ảnh xem trước: `npm run shots -- <slug>` (cần Google Chrome).
+   Nếu ảnh chụp đúng lúc slider đang chuyển, chạy lại với `WAIT=1200 npm run shots -- <slug>`.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy lên Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Đẩy thư mục này lên một repo GitHub.
+2. Vào vercel.com → Add New → Project → chọn repo → Deploy (không cần cấu hình gì thêm).
+3. Khi gắn tên miền riêng: Settings → Environment Variables → thêm `NEXT_PUBLIC_SITE_URL=https://tenmien.vn`, rồi Redeploy.
