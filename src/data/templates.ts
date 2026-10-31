@@ -24,7 +24,11 @@ export type Template = {
   /** Màu chủ đạo của mẫu, dùng làm điểm nhấn nhỏ trên thẻ */
   color: string;
   note: string;
+  /** Link demo riêng, nếu mẫu không nằm trên DEMO_BASE */
+  demo?: string;
 };
+
+export const demoUrl = (t: Pick<Template, 'slug' | 'demo'>) => t.demo ?? `${DEMO_BASE}/${t.slug}/`;
 
 export const templates: Template[] = [
   {
@@ -126,5 +130,16 @@ export const templates: Template[] = [
     pages: ['Trang chủ (một trang)'],
     color: '#c99a55',
     note: 'Bố cục dạng lưới ảnh, hợp CLB, phòng gym, lớp học.',
+  },
+  {
+    slug: 'smart-booking',
+    name: 'Smart Booking',
+    industry: 'Tiệm nail, salon làm đẹp có đặt lịch',
+    category: 'suc-khoe',
+    lang: 'Tiếng Việt',
+    pages: ['Dịch vụ & bảng giá', 'Chi tiết dịch vụ', 'Đặt lịch trực tuyến', 'Tài khoản khách hàng'],
+    color: '#b8994f',
+    note: 'Khách tự xem giá, đặt lịch online và nhận xác nhận qua email.',
+    demo: 'https://dltheme-smart-booking.site.je/',
   },
 ];

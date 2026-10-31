@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { categories, templates, DEMO_BASE, type Category, type Template } from '@/data/templates';
+import { categories, templates, demoUrl, type Category, type Template } from '@/data/templates';
 import { BrowserFrame, PhoneFrame } from './Frames';
 import { ArrowUpRight } from './icons';
 
@@ -44,7 +44,7 @@ export function TemplateGallery() {
 }
 
 function TemplateCard({ t }: { t: Template }) {
-  const demo = `${DEMO_BASE}/${t.slug}/`;
+  const demo = demoUrl(t);
 
   function pick() {
     window.dispatchEvent(new CustomEvent(PICK_EVENT, { detail: t.slug }));
