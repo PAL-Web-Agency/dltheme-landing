@@ -5,7 +5,7 @@
 // Cần Google Chrome cài sẵn; đổi CHROME_PATH nếu đường dẫn khác.
 import puppeteer from 'puppeteer-core';
 import sharp from 'sharp';
-import { templates, DEMO_BASE } from '../src/data/templates.ts';
+import { templates, demoUrl } from '../src/data/templates.ts';
 
 const CHROME =
   process.env.CHROME_PATH ?? 'C:/Program Files/Google/Chrome/Application/chrome.exe';
@@ -14,10 +14,10 @@ const list = only.length ? templates.filter((t) => only.includes(t.slug)) : temp
 
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
 
-async function capture(slug, viewport) {
+async function capture(t, viewport) {
   const page = await browser.newPage();
   await page.setViewport(viewport);
-  await page.goto(`${DEMO_BASE}/${slug}/`, { waitUntil: 'networkidle0', timeout: 60000 });
+  await page.goto(demoUrl(t), { waitUntil: 'networkidle0', timeout: 60000 });
   // Cuộn xuống để kích hoạt lazy-load / animation, rồi quay lại đầu trang
   await page.evaluate(async () => {
     for (let y = 0; y < 3000; y += 400) {
@@ -33,10 +33,10 @@ async function capture(slug, viewport) {
 }
 
 for (const t of list) {
-  const desktop = await capture(t.slug, { width: 1440, height: 900 });
+  const desktop = await capture(t, { width: 1440, height: 900 });
   await sharp(desktop).resize(1200).webp({ quality: 78 }).toFile(`public/templates/${t.slug}.webp`);
 
-  const mobile = await capture(t.slug, {
+  const mobile = await capture(t, {
     width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true,
   });
   await sharp(mobile).resize(360).webp({ quality: 78 }).toFile(`public/templates/${t.slug}-m.webp`);
