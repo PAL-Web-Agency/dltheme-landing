@@ -14,7 +14,7 @@ npm run dev        # http://localhost:3000
 | Muốn sửa | File |
 | --- | --- |
 | SĐT, email, Zalo, mô tả SEO | `src/lib/site.ts` |
-| Danh sách mẫu (tên, ngành, số trang, ghi chú) | `src/data/templates.ts` |
+| Danh sách mẫu (tên, ngành, link demo) | `src/data/templates.ts` |
 | Các bước làm, "Website nào cũng có", Hỏi đáp | `src/components/Sections.tsx` |
 | Tiêu đề lớn đầu trang | `src/components/Hero.tsx` |
 | Ảnh khi chia sẻ link (1200×630) | `src/app/opengraph-image.png` |
@@ -24,6 +24,7 @@ npm run dev        # http://localhost:3000
 1. Đưa mẫu lên repo `html-templates` (GitHub Pages).
 2. Thêm 1 object vào `src/data/templates.ts` (slug = tên thư mục).
 3. Chụp ảnh xem trước: `npm run shots -- <slug>` (cần Google Chrome).
+   Mẫu chưa đẩy lên GitHub Pages: chạy `python -m http.server 8765` trong thư mục html-templates rồi `SRC=http://localhost:8765 npm run shots -- <slug>`.
    Nếu ảnh chụp đúng lúc slider đang chuyển, chạy lại với `WAIT=1200 npm run shots -- <slug>`.
 
 ## Deploy lên Vercel

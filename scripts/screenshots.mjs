@@ -2,6 +2,7 @@
 // rồi nén thành WebP vào public/templates/.
 // Chạy: npm run shots            (tất cả mẫu)
 //       npm run shots -- spa coffee   (chỉ vài mẫu)
+//       SRC=http://localhost:8000 npm run shots -- spa   (chụp từ thư mục html-templates đang chạy ở máy)
 // Cần Google Chrome cài sẵn; đổi CHROME_PATH nếu đường dẫn khác.
 import puppeteer from 'puppeteer-core';
 import sharp from 'sharp';
@@ -17,7 +18,9 @@ const browser = await puppeteer.launch({ executablePath: CHROME, headless: true 
 async function capture(t, viewport) {
   const page = await browser.newPage();
   await page.setViewport(viewport);
-  await page.goto(demoUrl(t), { waitUntil: 'networkidle0', timeout: 60000 });
+  // SRC=http://localhost:8000 → chụp bản local thay vì bản trên GitHub Pages (chỉ với mẫu không có link demo riêng)
+  const url = process.env.SRC && !t.demo ? `${process.env.SRC}/${t.slug}/` : demoUrl(t);
+  await page.goto(url, { waitUntil: 'networkidle0', timeout: 60000 });
   // Cuộn xuống để kích hoạt lazy-load / animation, rồi quay lại đầu trang
   await page.evaluate(async () => {
     for (let y = 0; y < 3000; y += 400) {

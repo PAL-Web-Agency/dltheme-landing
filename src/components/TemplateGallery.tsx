@@ -33,9 +33,10 @@ export function TemplateGallery() {
       </div>
 
       <ul className="mt-10 grid gap-x-8 gap-y-14 md:grid-cols-2">
-        {list.map((t) => (
+        {list.map((t, i) => (
           <li key={t.slug}>
-            <TemplateCard t={t} />
+            {/* 2 thẻ đầu nằm ngay hàng đầu tiên → tải ngay, không lazy */}
+            <TemplateCard t={t} eager={i < 2} />
           </li>
         ))}
       </ul>
@@ -43,7 +44,7 @@ export function TemplateGallery() {
   );
 }
 
-function TemplateCard({ t }: { t: Template }) {
+function TemplateCard({ t, eager }: { t: Template; eager?: boolean }) {
   const demo = demoUrl(t);
 
   function pick() {
@@ -57,6 +58,7 @@ function TemplateCard({ t }: { t: Template }) {
           slug={t.slug}
           alt={`Trang chủ mẫu ${t.name} trên máy tính`}
           sizes="(min-width: 1152px) 500px, (min-width: 768px) 45vw, 92vw"
+          loading={eager ? 'eager' : undefined}
           className="transition-transform duration-300 group-hover:-translate-y-1"
         />
         <PhoneFrame
@@ -64,6 +66,7 @@ function TemplateCard({ t }: { t: Template }) {
           alt={`Mẫu ${t.name} trên điện thoại`}
           className="absolute right-0 bottom-0 w-[22%] transition-transform duration-300 group-hover:translate-y-1"
           sizes="120px"
+          loading={eager ? 'eager' : undefined}
         />
       </a>
 
@@ -71,16 +74,9 @@ function TemplateCard({ t }: { t: Template }) {
         <h3 className="font-display text-2xl font-bold tracking-tight">
           {t.name}
         </h3>
-        <span className="flex shrink-0 items-center gap-1.5 text-xs text-muted">
-          <span className="size-2.5 rounded-full" style={{ background: t.color }} aria-hidden />
-          {t.lang}
-        </span>
+        <span className="size-2.5 shrink-0 rounded-full" style={{ background: t.color }} aria-hidden />
       </div>
       <p className="mt-1 text-ink-2">{t.industry}</p>
-      <p className="mt-3 text-sm leading-relaxed text-muted">
-        <span className="font-medium text-ink-2">{t.pages.length} trang:</span> {t.pages.join(' · ')}
-      </p>
-      <p className="mt-2 text-sm text-muted">{t.note}</p>
 
       <div className="mt-5 flex flex-wrap gap-2">
         <a
