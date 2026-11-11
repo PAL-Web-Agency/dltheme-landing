@@ -6,9 +6,11 @@ type FrameProps = {
   className?: string;
   sizes?: string;
   preload?: boolean;
+  /** 'eager' cho ảnh nằm ngay màn hình đầu (ảnh LCP) */
+  loading?: 'eager' | 'lazy';
 };
 
-export function BrowserFrame({ slug, alt, className = '', sizes, preload }: FrameProps) {
+export function BrowserFrame({ slug, alt, className = '', sizes, preload, loading }: FrameProps) {
   return (
     <div className={`overflow-hidden rounded-lg border border-ink/15 bg-card shadow-[0_1px_0_rgba(0,0,0,.04),0_18px_40px_-24px_rgba(45,28,15,.45)] ${className}`}>
       <div className="flex items-center gap-1.5 border-b border-ink/10 bg-paper-2/70 px-3 py-2">
@@ -24,13 +26,14 @@ export function BrowserFrame({ slug, alt, className = '', sizes, preload }: Fram
         height={750}
         sizes={sizes ?? '(min-width: 1024px) 560px, 100vw'}
         preload={preload}
+        loading={loading}
         className="block h-auto w-full"
       />
     </div>
   );
 }
 
-export function PhoneFrame({ slug, alt, className = '', sizes, preload }: FrameProps) {
+export function PhoneFrame({ slug, alt, className = '', sizes, preload, loading }: FrameProps) {
   return (
     <div className={`overflow-hidden rounded-[1.1rem] border-[5px] border-ink bg-ink shadow-[0_20px_40px_-20px_rgba(45,28,15,.6)] ${className}`}>
       <Image
@@ -40,6 +43,7 @@ export function PhoneFrame({ slug, alt, className = '', sizes, preload }: FrameP
         height={779}
         sizes={sizes ?? '140px'}
         preload={preload}
+        loading={loading}
         className="block aspect-[9/17] h-auto w-full rounded-[0.7rem] object-cover object-top"
       />
     </div>
