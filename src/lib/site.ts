@@ -5,7 +5,7 @@ export const site = {
     'DL Theme nhận làm website cho cửa hàng, quán ăn, spa, công ty dịch vụ tại Đắk Lắk và các tỉnh. Có sẵn mẫu giao diện theo ngành, chỉnh theo thương hiệu của bạn.',
   phone: '0589888579',
   phoneDisplay: '0589 888 579',
-  email: 'ppalwebagency@gmail.com',
+  email: 'palwebagency@gmail.com',
   zalo: 'https://zalo.me/0589888579',
   area: 'Đắk Lắk',
   // Vercel tự cấp VERCEL_PROJECT_PRODUCTION_URL. Khi có tên miền riêng,
