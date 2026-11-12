@@ -44,6 +44,13 @@ export const templates: Template[] = [
     demo: 'https://dalieuthuhien.vn/',
   },
   {
+    slug: 'tu-van-du-hoc-xkld',
+    name: 'DL Global',
+    industry: 'Tư vấn du học, xuất khẩu lao động',
+    category: 'dich-vu',
+    color: '#0a9e8f',
+  },
+  {
     slug: 'bicycle-sport',
     name: 'DLTheme Bike',
     industry: 'Cửa hàng xe đạp thể thao, xe đạp điện',
