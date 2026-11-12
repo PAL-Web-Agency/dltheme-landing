@@ -44,6 +44,20 @@ export const templates: Template[] = [
     demo: 'https://dalieuthuhien.vn/',
   },
   {
+    slug: 'bicycle-sport',
+    name: 'DLTheme Bike',
+    industry: 'Cửa hàng xe đạp thể thao, xe đạp điện',
+    category: 'ban-hang',
+    color: '#ff5b14',
+  },
+  {
+    slug: 'hair-salon-men',
+    name: 'DLTheme Barber',
+    industry: 'Tiệm cắt tóc nam, barbershop',
+    category: 'suc-khoe',
+    color: '#c62f3a',
+  },
+  {
     slug: 'spa',
     name: 'DLTheme Spa',
     industry: 'Spa, massage, chăm sóc da, đặt lịch trị liệu',
