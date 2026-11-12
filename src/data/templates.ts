@@ -54,7 +54,7 @@ export const templates: Template[] = [
     slug: 'hair-salon-men',
     name: 'DLTheme Barber',
     industry: 'Tiệm cắt tóc nam, barbershop',
-    category: 'suc-khoe',
+    category: 'dich-vu',
     color: '#c62f3a',
   },
   {
