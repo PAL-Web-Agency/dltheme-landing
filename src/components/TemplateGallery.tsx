@@ -16,6 +16,8 @@ export function TemplateGallery() {
       <div role="group" aria-label="Lọc theo ngành" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:px-0">
         {categories.map((c) => {
           const active = cat === c.id;
+          const count = c.id === 'all' ? templates.length : templates.filter((t) => t.category === c.id).length;
+          if (!count) return null;
           return (
             <button
               key={c.id}
@@ -26,7 +28,7 @@ export function TemplateGallery() {
                 active ? 'border-ink bg-ink text-paper' : 'border-line bg-card text-ink-2 hover:border-ink/40'
               }`}
             >
-              {c.label}
+              {c.label} <span className={active ? 'text-paper/60' : 'text-muted'}>{count}</span>
             </button>
           );
         })}
@@ -56,14 +58,14 @@ function TemplateCard({ t, eager }: { t: Template; eager?: boolean }) {
       <a href={demo} target="_blank" rel="noopener" className="relative block pr-[9%] pb-[7%]" aria-label={`Mở demo mẫu ${t.name} trong tab mới`}>
         <BrowserFrame
           slug={t.slug}
-          alt={`Trang chủ mẫu ${t.name} trên máy tính`}
+          alt={`Mẫu website ${t.name} — ${t.industry} — giao diện trên máy tính`}
           sizes="(min-width: 1152px) 500px, (min-width: 768px) 45vw, 92vw"
           loading={eager ? 'eager' : undefined}
           className="transition-transform duration-300 group-hover:-translate-y-1"
         />
         <PhoneFrame
           slug={t.slug}
-          alt={`Mẫu ${t.name} trên điện thoại`}
+          alt={`Mẫu website ${t.name} trên điện thoại`}
           className="absolute right-0 bottom-0 w-[22%] transition-transform duration-300 group-hover:translate-y-1"
           sizes="120px"
           loading={eager ? 'eager' : undefined}

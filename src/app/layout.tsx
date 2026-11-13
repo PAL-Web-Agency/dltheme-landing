@@ -20,22 +20,35 @@ const code = JetBrains_Mono({
   variable: '--font-code',
 });
 
-const title = `${site.name} — ${site.tagline}`;
-
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title,
+  title: { default: site.title, template: `%s — ${site.name}` },
   description: site.description,
+  keywords: site.keywords,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: 'technology',
   alternates: { canonical: '/' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 },
+  },
   openGraph: {
     type: 'website',
     locale: 'vi_VN',
     siteName: site.name,
-    title,
+    title: site.title,
     description: site.description,
     url: '/',
   },
-  twitter: { card: 'summary_large_image', title, description: site.description },
+  twitter: { card: 'summary_large_image', title: site.title, description: site.description },
+  // Đặt NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION (mã từ Google Search Console) trong Vercel để xác minh trang
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export const viewport: Viewport = {

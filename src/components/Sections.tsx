@@ -20,8 +20,8 @@ function SectionHead({ no, kicker, title, children }: { no: string; kicker: stri
 export function Templates() {
   return (
     <section id="mau" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-      <SectionHead no="01" kicker="Mẫu giao diện" title="Mẫu nào cũng có bản demo chạy thật.">
-        Bấm vào ảnh để mở demo, xem thử trên cả điện thoại. Chữ và hình trong mẫu chỉ để minh hoạ — khi làm
+      <SectionHead no="01" kicker="Mẫu giao diện" title="Mẫu website theo ngành, có demo chạy thật.">
+        Khách sạn, nhà hàng, spa, cửa hàng, công ty dịch vụ… Bấm vào ảnh để mở demo, xem thử trên cả điện thoại. Chữ và hình trong mẫu chỉ để minh hoạ — khi làm
         sẽ thay bằng thông tin, màu sắc và logo của bạn.
       </SectionHead>
       <div className="mt-12">
@@ -42,7 +42,7 @@ export function Templates() {
   );
 }
 
-const faqs = [
+export const faqs = [
   {
     q: 'Làm website giá bao nhiêu?',
     a: `Tuỳ mẫu, số trang và phần cần chỉnh. Gọi ${site.phoneDisplay} hoặc nhắn Zalo kể nhu cầu, mình báo giá cụ thể trước khi bắt đầu.`,
@@ -143,7 +143,7 @@ export function Footer() {
   return (
     <footer className="bg-deep pb-24 text-paper/55 md:pb-0">
       <div className="mx-auto flex max-w-6xl flex-col gap-2 border-t border-paper/15 px-4 py-8 text-sm sm:flex-row sm:justify-between sm:px-6">
-        <p>© 2026 DL Theme · Làm website tại Đắk Lắk</p>
+        <p>© 2026 DL Theme · Thiết kế website tại Đắk Lắk</p>
         <p>
           <a href={`tel:${site.phone}`} className="font-mono hover:text-paper">
             {site.phoneDisplay}

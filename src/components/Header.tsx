@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { site } from '@/lib/site';
 import { Logo } from './Logo';
 import { PhoneIcon } from './icons';
@@ -12,9 +13,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur supports-[backdrop-filter]:bg-paper/75">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
-        <a href="" aria-label="DL Theme — về đầu trang">
+        <Link href="/" aria-label="DL Theme — về trang chủ">
           <Logo />
-        </a>
+        </Link>
         <nav aria-label="Chính" className="hidden md:block">
           <ul className="flex items-center gap-7 text-[0.94rem] text-ink-2">
             {links.map((l) => (

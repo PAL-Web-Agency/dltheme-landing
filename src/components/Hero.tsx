@@ -14,12 +14,12 @@ export function Hero() {
     <section className="relative overflow-hidden">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 pt-12 pb-14 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-20">
         <div className="lg:col-span-6 lg:pt-6">
-          <p className="font-mono text-xs tracking-wide text-muted uppercase">Làm website · Đắk Lắk</p>
+          <p className="font-mono text-xs tracking-wide text-muted uppercase">Thiết kế website · Đắk Lắk</p>
           <h1 className="mt-5 font-display text-[2.6rem] leading-[1.05] font-bold tracking-[-0.03em] text-balance sm:text-6xl">
             Chọn một mẫu website <span className="whitespace-nowrap">ưng ý,</span> phần còn lại <span className="scribble">để mình lo.</span>
           </h1>
           <p className="mt-6 max-w-xl text-[1.06rem] leading-relaxed text-ink-2">
-            DL Theme nhận làm website cho cửa hàng, quán ăn, spa, công ty dịch vụ. Bạn gửi logo, hình ảnh và
+            DL Theme nhận làm website cho khách sạn, nhà hàng, spa, cửa hàng và công ty dịch vụ tại Đắk Lắk và các tỉnh. Bạn gửi logo, hình ảnh và
             thông tin — mình sửa mẫu theo thương hiệu của bạn, gắn tên miền rồi bàn giao.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
