@@ -24,11 +24,18 @@ export function TemplateGallery() {
               type="button"
               aria-pressed={active}
               onClick={() => setCat(c.id)}
-              className={`shrink-0 rounded-full border px-4 py-2 text-sm transition-colors ${
+              className={`inline-flex shrink-0 items-center gap-2 rounded-full border py-2 pr-2 pl-4 text-sm transition-colors ${
                 active ? 'border-ink bg-ink text-paper' : 'border-line bg-card text-ink-2 hover:border-ink/40'
               }`}
             >
-              {c.label} <span className={active ? 'text-paper/60' : 'text-muted'}>{count}</span>
+              {c.label}
+              <span
+                className={`inline-grid h-5 min-w-5 place-items-center rounded-full px-1.5 font-mono text-[11px] leading-none tabular-nums ${
+                  active ? 'bg-paper/15 text-paper' : 'bg-ink/[.06] text-muted'
+                }`}
+              >
+                {count}
+              </span>
             </button>
           );
         })}
