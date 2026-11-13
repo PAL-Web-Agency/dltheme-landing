@@ -3,14 +3,16 @@
 
 export const DEMO_BASE = 'https://pal-web-agency.github.io/html-templates';
 
-export type Category = 'an-uong' | 'dich-vu' | 'ban-hang' | 'suc-khoe';
+export type Category = 'du-lich' | 'lam-dep' | 'an-uong' | 'dich-vu' | 'ban-hang' | 'the-thao';
 
 export const categories: { id: Category | 'all'; label: string }[] = [
   { id: 'all', label: 'Tất cả' },
+  { id: 'du-lich', label: 'Du lịch & khách sạn' },
+  { id: 'lam-dep', label: 'Làm đẹp & spa' },
+  { id: 'an-uong', label: 'Nhà hàng & cà phê' },
   { id: 'dich-vu', label: 'Dịch vụ' },
-  { id: 'an-uong', label: 'Ăn uống' },
   { id: 'ban-hang', label: 'Bán hàng' },
-  { id: 'suc-khoe', label: 'Sức khoẻ & thể thao' },
+  { id: 'the-thao', label: 'Thể thao' },
 ];
 
 export type Template = {
@@ -31,7 +33,7 @@ export const templates: Template[] = [
     slug: 'pnp-travel',
     name: 'PNP Travel Việt',
     industry: 'Công ty du lịch, đặt tour',
-    category: 'dich-vu',
+    category: 'du-lich',
     color: '#1f7a2e',
     demo: 'https://pnptravelviet.com/',
   },
@@ -39,9 +41,23 @@ export const templates: Template[] = [
     slug: 'da-lieu-thu-hien',
     name: 'Da liễu Thu Hiền',
     industry: 'Phòng khám da liễu, thẩm mỹ',
-    category: 'suc-khoe',
+    category: 'lam-dep',
     color: '#3aa59a',
     demo: 'https://dalieuthuhien.vn/',
+  },
+  {
+    slug: 'hotel-da-lat',
+    name: 'Thông Reo Hotel',
+    industry: 'Khách sạn, homestay, resort nghỉ dưỡng',
+    category: 'du-lich',
+    color: '#1d3a30',
+  },
+  {
+    slug: 'hotel-da-nang',
+    name: 'Sóng Biếc Hotel',
+    industry: 'Khách sạn biển, đặt phòng trực tuyến',
+    category: 'du-lich',
+    color: '#e2764f',
   },
   {
     slug: 'tu-van-du-hoc-xkld',
@@ -54,21 +70,21 @@ export const templates: Template[] = [
     slug: 'bicycle-sport',
     name: 'DLTheme Bike',
     industry: 'Cửa hàng xe đạp thể thao, xe đạp điện',
-    category: 'ban-hang',
+    category: 'the-thao',
     color: '#ff5b14',
   },
   {
     slug: 'hair-salon-men',
     name: 'DLTheme Barber',
     industry: 'Tiệm cắt tóc nam, barbershop',
-    category: 'dich-vu',
+    category: 'lam-dep',
     color: '#c62f3a',
   },
   {
     slug: 'spa',
     name: 'DLTheme Spa',
     industry: 'Spa, massage, chăm sóc da, đặt lịch trị liệu',
-    category: 'suc-khoe',
+    category: 'lam-dep',
     color: '#4a2c22',
   },
   {
@@ -131,14 +147,14 @@ export const templates: Template[] = [
     slug: 'pickleball',
     name: 'DLTheme Pickleball',
     industry: 'Câu lạc bộ thể thao, sân tập, lớp học',
-    category: 'suc-khoe',
+    category: 'the-thao',
     color: '#c99a55',
   },
   {
     slug: 'smart-booking',
     name: 'Smart Booking',
     industry: 'Tiệm nail, salon làm đẹp có đặt lịch',
-    category: 'suc-khoe',
+    category: 'lam-dep',
     color: '#b8994f',
     demo: 'https://dltheme-smart-booking.site.je/',
   },
