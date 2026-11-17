@@ -2,7 +2,8 @@ import type { Metadata, Viewport } from 'next';
 import { Be_Vietnam_Pro } from 'next/font/google';
 import { site } from '@/lib/site';
 import { Header } from '@/components/Header';
-import { Footer, MobileBar } from '@/components/Footer';
+import { Footer } from '@/components/Footer';
+import { FloatingActions } from '@/components/FloatingActions';
 import { Analytics } from '@/components/Analytics';
 import './globals.css';
 
@@ -70,7 +71,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <Header />
         <main id="noi-dung">{children}</main>
         <Footer />
-        <MobileBar />
+        <FloatingActions />
         <Analytics />
       </body>
     </html>

@@ -5,7 +5,7 @@ import { FacebookIcon, MailIcon, PhoneIcon, PinIcon, ZaloIcon } from './icons';
 
 export function Footer() {
   return (
-    <footer data-track-area="footer" className="bg-deep pb-24 text-white/65 md:pb-0">
+    <footer data-track-area="footer" className="bg-deep text-white/65">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-12">
         <div className="md:col-span-5">
           {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- cố ý tải lại trang */}
@@ -76,19 +76,5 @@ export function Footer() {
         <p className="mx-auto max-w-6xl px-4 py-6 text-xs sm:px-6">© 2026 PAL Web Agency · Thiết kế website tại Đắk Lắk</p>
       </div>
     </footer>
-  );
-}
-
-/** Thanh gọi / Zalo cố định ở đáy màn hình, chỉ hiện trên điện thoại */
-export function MobileBar() {
-  return (
-    <div data-track-area="mobile_bar" className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-line bg-white/95 p-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
-      <a href={`tel:${site.phone}`} className="flex items-center justify-center gap-2 rounded-full bg-ink py-3 font-semibold text-white">
-        <PhoneIcon width={17} height={17} /> Gọi ngay
-      </a>
-      <a href={site.zalo} target="_blank" rel="noopener" className="flex items-center justify-center gap-2 rounded-full bg-accent py-3 font-semibold text-white">
-        <ZaloIcon /> Nhắn Zalo
-      </a>
-    </div>
   );
 }
