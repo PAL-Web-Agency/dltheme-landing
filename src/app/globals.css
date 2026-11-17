@@ -1,28 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  /* Tông nâu hợp mệnh Kim: nâu đất (Thổ sinh Kim) + vàng đồng, nền trắng kem.
-     Tránh đỏ, hồng, tím (Hỏa khắc Kim). */
-  --color-paper: #f7f3ec;
-  --color-paper-2: #efe7da;
-  --color-card: #fffdf9;
-  --color-ink: #2b1f17;
-  --color-ink-2: #4f4035;
-  --color-muted: #74665a;
-  --color-line: #e0d5c5;
-  /* nâu đồng cho nút chữ trắng */
-  --color-accent: #7a4f2a;
-  --color-accent-dark: #5e3b1d;
-  /* vàng đồng cho điểm nhấn trên nền nâu đậm */
-  --color-gold: #d2a65a;
-  /* nâu đậm cho khối liên hệ */
-  --color-deep: #2e2119;
+  /* Bảng màu lấy theo mẫu Smart Booking: vàng đồng + kem nhạt, chữ xám than */
+  --color-paper: #faf8f3;
+  --color-paper-2: #f4eee1;
+  --color-card: #ffffff;
+  --color-ink: #1f2328;
+  --color-ink-2: #4a4f57;
+  --color-muted: #6b7079;
+  --color-line: #ebe5d8;
+  /* vàng đồng chủ đạo — nền nút, biểu tượng */
+  --color-accent: #b8994f;
+  --color-accent-dark: #9a7d3a;
+  /* vàng đậm cho chữ trên nền sáng (đủ tương phản) */
+  --color-accent-ink: #84672a;
+  /* nền kem cho mục đang chọn, ô biểu tượng */
+  --color-accent-soft: #f6ecd6;
+  /* vàng sáng cho điểm nhấn trên nền tối */
+  --color-gold: #dcc184;
+  /* nền tối cho chân trang */
+  --color-deep: #1d1f23;
 }
 
 @theme inline {
-  --font-sans: var(--font-body), system-ui, sans-serif;
-  --font-display: var(--font-heading), var(--font-body), sans-serif;
-  --font-mono: var(--font-code), ui-monospace, monospace;
+  --font-sans: var(--font-main), system-ui, sans-serif;
+  --font-display: var(--font-main), system-ui, sans-serif;
 }
 
 :root {
@@ -49,13 +51,4 @@ body {
 ::selection {
   background: var(--color-accent);
   color: #fff;
-}
-
-/* Gạch chân tay vẽ cho chữ nhấn trong tiêu đề */
-.scribble {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 40 3, 80 11, 120 6 S 180 4, 198 7' fill='none' stroke='%23d2a65a' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: 100% 0.32em;
-  background-position: 0 100%;
-  padding-bottom: 0.08em;
 }

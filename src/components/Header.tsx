@@ -1,40 +1,84 @@
-import Link from 'next/link';
-import { site } from '@/lib/site';
-import { Logo } from './Logo';
-import { PhoneIcon } from './icons';
+'use client';
 
-const links = [
-  { href: '#mau', label: 'Mẫu giao diện' },
-  { href: '#hoi-dap', label: 'Hỏi đáp' },
-  { href: '#lien-he', label: 'Liên hệ' },
-];
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import { nav, site } from '@/lib/site';
+import { Logo } from './Logo';
+import { CloseIcon, MenuIcon, PhoneIcon } from './icons';
 
 export function Header() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur supports-[backdrop-filter]:bg-paper/75">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
-        <Link href="/" aria-label="DL Theme — về trang chủ">
+    <header data-track-area="header" className="sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80">
+      <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
+        <Link href="/" aria-label={`${site.name} — về trang chủ`}>
           <Logo />
         </Link>
+
         <nav aria-label="Chính" className="hidden md:block">
-          <ul className="flex items-center gap-7 text-[0.94rem] text-ink-2">
-            {links.map((l) => (
+          <ul className="flex items-center gap-1 text-[0.95rem] font-medium">
+            {nav.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="transition-colors hover:text-accent">
+                <Link
+                  href={l.href}
+                  aria-current={isActive(l.href) ? 'page' : undefined}
+                  className={`rounded-lg px-3.5 py-2 transition-colors ${
+                    isActive(l.href) ? 'bg-accent-soft text-accent-ink' : 'text-ink-2 hover:text-accent-ink'
+                  }`}
+                >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
-        <a
-          href={`tel:${site.phone}`}
-          className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-accent"
-        >
-          <PhoneIcon width={16} height={16} />
-          <span className="font-mono tracking-tight">{site.phoneDisplay}</span>
-        </a>
+
+        <div className="flex items-center gap-2">
+          <a
+            href={`tel:${site.phone}`}
+            className="hidden items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-dark sm:inline-flex"
+          >
+            <PhoneIcon width={16} height={16} />
+            {site.phoneDisplay}
+          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="menu-dien-thoai"
+            aria-label={open ? 'Đóng menu' : 'Mở menu'}
+            className="grid size-11 place-items-center rounded-full border border-line bg-white text-ink md:hidden"
+          >
+            {open ? <CloseIcon /> : <MenuIcon />}
+          </button>
+        </div>
       </div>
+
+      {open && (
+        <nav id="menu-dien-thoai" aria-label="Chính" className="border-t border-line bg-white md:hidden">
+          <ul className="mx-auto max-w-6xl px-4 py-3">
+            {nav.map((l) => (
+              <li key={l.href}>
+                <Link
+                  href={l.href}
+                  aria-current={isActive(l.href) ? 'page' : undefined}
+                  onClick={() => setOpen(false)}
+                  className={`block rounded-lg px-3 py-3 font-medium ${
+                    isActive(l.href) ? 'bg-accent-soft text-accent-ink' : 'text-ink-2'
+                  }`}
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }

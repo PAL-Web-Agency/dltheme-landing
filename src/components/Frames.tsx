@@ -12,12 +12,11 @@ type FrameProps = {
 
 export function BrowserFrame({ slug, alt, className = '', sizes, preload, loading }: FrameProps) {
   return (
-    <div className={`overflow-hidden rounded-lg border border-ink/15 bg-card shadow-[0_1px_0_rgba(0,0,0,.04),0_18px_40px_-24px_rgba(45,28,15,.45)] ${className}`}>
-      <div className="flex items-center gap-1.5 border-b border-ink/10 bg-paper-2/70 px-3 py-2">
-        <span className="size-2 rounded-full bg-ink/20" />
-        <span className="size-2 rounded-full bg-ink/20" />
-        <span className="size-2 rounded-full bg-ink/20" />
-        <span className="ml-2 truncate font-mono text-[10px] text-muted">…/html-templates/{slug}</span>
+    <div className={`overflow-hidden rounded-xl border border-ink/10 bg-white shadow-[0_1px_0_rgba(0,0,0,.03),0_22px_44px_-26px_rgba(31,35,40,.45)] ${className}`}>
+      <div className="flex items-center gap-1.5 border-b border-ink/5 bg-paper px-3 py-2">
+        <span className="size-2 rounded-full bg-ink/15" />
+        <span className="size-2 rounded-full bg-ink/15" />
+        <span className="size-2 rounded-full bg-ink/15" />
       </div>
       <Image
         src={`/templates/${slug}.webp`}
@@ -35,7 +34,7 @@ export function BrowserFrame({ slug, alt, className = '', sizes, preload, loadin
 
 export function PhoneFrame({ slug, alt, className = '', sizes, preload, loading }: FrameProps) {
   return (
-    <div className={`overflow-hidden rounded-[1.1rem] border-[5px] border-ink bg-ink shadow-[0_20px_40px_-20px_rgba(45,28,15,.6)] ${className}`}>
+    <div className={`overflow-hidden rounded-[1.1rem] border-[5px] border-ink bg-ink shadow-[0_20px_40px_-20px_rgba(31,35,40,.6)] ${className}`}>
       <Image
         src={`/templates/${slug}-m.webp`}
         alt={alt}
