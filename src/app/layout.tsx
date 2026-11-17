@@ -1,23 +1,16 @@
 import type { Metadata, Viewport } from 'next';
-import { Be_Vietnam_Pro, Bricolage_Grotesque, JetBrains_Mono } from 'next/font/google';
+import { Be_Vietnam_Pro } from 'next/font/google';
 import { site } from '@/lib/site';
+import { Header } from '@/components/Header';
+import { Footer, MobileBar } from '@/components/Footer';
+import { Analytics } from '@/components/Analytics';
 import './globals.css';
 
-const body = Be_Vietnam_Pro({
+// Be Vietnam Pro: đủ dấu tiếng Việt (Poppins không có ư, ạ, ệ…)
+const font = Be_Vietnam_Pro({
   subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
-});
-
-const heading = Bricolage_Grotesque({
-  subsets: ['latin', 'vietnamese'],
-  variable: '--font-heading',
-});
-
-const code = JetBrains_Mono({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500'],
-  variable: '--font-code',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-main',
 });
 
 export const metadata: Metadata = {
@@ -45,20 +38,40 @@ export const metadata: Metadata = {
     url: '/',
   },
   twitter: { card: 'summary_large_image', title: site.title, description: site.description },
-  // Đặt NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION (mã từ Google Search Console) trong Vercel để xác minh trang
-  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
-    : {}),
+  // Mã xác minh Google Search Console (sửa trong src/lib/site.ts hoặc biến NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION)
+  ...(site.googleVerification ? { verification: { google: site.googleVerification } } : {}),
 };
 
 export const viewport: Viewport = {
-  themeColor: '#f7f3ec',
+  themeColor: '#ffffff',
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="vi" className={`${body.variable} ${heading.variable} ${code.variable}`}>
-      <body>{children}</body>
+    <html lang="vi" className={font.variable}>
+      <body>
+        {site.gtmId && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${site.gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
+        <a
+          href="#noi-dung"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-ink focus:px-3 focus:py-2 focus:text-white"
+        >
+          Bỏ qua, tới nội dung chính
+        </a>
+        <Header />
+        <main id="noi-dung">{children}</main>
+        <Footer />
+        <MobileBar />
+        <Analytics />
+      </body>
     </html>
   );
 }

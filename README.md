@@ -1,6 +1,8 @@
-# DL Theme — Landing page
+# PAL Web Agency — Website giới thiệu
 
-Trang giới thiệu dịch vụ làm website của DL Theme (Đắk Lắk). Next.js App Router + Tailwind CSS v4, toàn bộ trang được build tĩnh.
+Website giới thiệu dịch vụ làm website của PAL Web Agency (Ea Drăng, Đắk Lắk). Next.js App Router + Tailwind CSS v4, toàn bộ trang được build tĩnh.
+
+Các trang: `/` (Trang chủ), `/gioi-thieu`, `/mau-giao-dien`, `/lien-he`.
 
 ## Chạy ở máy
 
@@ -13,12 +15,22 @@ npm run dev        # http://localhost:3000
 
 | Muốn sửa | File |
 | --- | --- |
-| SĐT, email, Zalo, tiêu đề / mô tả / từ khoá SEO | `src/lib/site.ts` |
+| SĐT, email, Zalo, Facebook, địa chỉ, SEO, menu | `src/lib/site.ts` |
+| Màu sắc | `src/app/globals.css` (khối `@theme`) |
+| Font chữ | `src/app/layout.tsx` |
+| Trang chủ (dịch vụ, lý do chọn, quy trình) | `src/app/page.tsx`, `src/components/Hero.tsx` |
+| Giới thiệu, Hỏi đáp | `src/app/gioi-thieu/page.tsx` |
+| Liên hệ, bản đồ | `src/app/lien-he/page.tsx`, `src/components/ContactForm.tsx` |
 | Danh sách mẫu, nhóm ngành (bộ lọc) | `src/data/templates.ts` |
-| Dữ liệu có cấu trúc (schema.org JSON-LD) | `src/app/page.tsx` |
-| Các bước làm, "Website nào cũng có", Hỏi đáp | `src/components/Sections.tsx` |
-| Tiêu đề lớn đầu trang | `src/components/Hero.tsx` |
 | Ảnh khi chia sẻ link (1200×630) | `src/app/opengraph-image.png` |
+
+## Form liên hệ → Google Sheet
+
+Form gửi về một Google Apps Script, script ghi thành 1 dòng trong Google Sheet và gửi email báo có khách mới.
+Làm theo hướng dẫn ở đầu file `scripts/google-sheet-form.gs`, rồi đặt biến môi trường
+`NEXT_PUBLIC_FORM_ENDPOINT` trong Vercel và Redeploy.
+
+Chưa đặt biến này thì form vẫn dùng được: nút "Gửi qua email" mở ứng dụng email, nút "Gửi qua Zalo" chép lời nhắn rồi mở Zalo.
 
 ## Thêm mẫu mới
 

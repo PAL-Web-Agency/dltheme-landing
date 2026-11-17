@@ -42,3 +42,4 @@ next-env.d.ts
 
 # ảnh chụp tạm
 scripts/raw/
+!.env.example

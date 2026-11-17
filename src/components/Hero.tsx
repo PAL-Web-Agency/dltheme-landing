@@ -1,89 +1,65 @@
+import Link from 'next/link';
+import { templates } from '@/data/templates';
 import { site } from '@/lib/site';
 import { BrowserFrame, PhoneFrame } from './Frames';
-import { ArrowDown, ZaloIcon } from './icons';
+import { ArrowRight, CheckIcon, ZaloIcon } from './icons';
+import { btn, Eyebrow } from './ui';
 
-const facts = [
-  { value: 'Xem trước', label: 'mẫu nào cũng có bản demo chạy thật' },
-  { value: 'Gọn trên điện thoại', label: 'hiển thị tốt cả trên di động lẫn máy tính' },
-  { value: 'Đúng thương hiệu', label: 'đổi màu, logo, hình ảnh theo cửa hàng của bạn' },
-  { value: 'Làm qua Zalo', label: 'khách ở tỉnh nào cũng làm được' },
-];
+const points = ['Xem demo chạy thật trước khi làm', 'Hiển thị đẹp trên điện thoại', 'Báo giá rõ, không phát sinh'];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 pt-12 pb-14 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-20">
-        <div className="lg:col-span-6 lg:pt-6">
-          <p className="font-mono text-xs tracking-wide text-muted uppercase">Thiết kế website · Đắk Lắk</p>
-          <h1 className="mt-5 font-display text-[2.6rem] leading-[1.05] font-bold tracking-[-0.03em] text-balance sm:text-6xl">
-            Chọn một mẫu website <span className="whitespace-nowrap">ưng ý,</span> phần còn lại <span className="scribble">để mình lo.</span>
+    <section data-track-area="hero" className="relative overflow-hidden border-b border-line bg-gradient-to-br from-paper-2/80 via-paper to-white">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 pt-12 pb-16 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pt-20 lg:pb-24">
+        <div className="lg:col-span-6">
+          <Eyebrow>Thiết kế website · Đắk Lắk</Eyebrow>
+          <h1 className="mt-4 text-[2.3rem] leading-[1.15] font-semibold tracking-tight text-balance sm:text-5xl lg:text-[3.4rem]">
+            Website chuyên nghiệp cho <span className="text-accent">cửa hàng</span> và <span className="text-accent">doanh nghiệp</span> của bạn
           </h1>
-          <p className="mt-6 max-w-xl text-[1.06rem] leading-relaxed text-ink-2">
-            DL Theme nhận làm website cho khách sạn, nhà hàng, spa, cửa hàng và công ty dịch vụ tại Đắk Lắk và các tỉnh. Bạn gửi logo, hình ảnh và
-            thông tin — mình sửa mẫu theo thương hiệu của bạn, gắn tên miền rồi bàn giao.
+          <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink-2">
+            PAL Web Agency thiết kế website giới thiệu, bán hàng và đặt lịch cho khách sạn, nhà hàng, spa, cửa hàng và công ty dịch vụ. Chọn
+            mẫu có sẵn để lên web nhanh, hoặc làm mới theo yêu cầu riêng.
           </p>
+          <ul className="mt-6 space-y-2">
+            {points.map((p) => (
+              <li key={p} className="flex items-center gap-2.5 text-ink-2">
+                <span className="grid size-5 place-items-center rounded-full bg-accent-soft text-accent-ink">
+                  <CheckIcon width={13} height={13} strokeWidth={2.6} />
+                </span>
+                {p}
+              </li>
+            ))}
+          </ul>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href="#mau"
-              className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-semibold text-white transition-colors hover:bg-accent-dark"
-            >
-              Xem các mẫu <ArrowDown width={16} height={16} />
-            </a>
-            <a
-              href={site.zalo}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 rounded-full border border-ink/25 px-6 py-3 font-semibold transition-colors hover:border-ink hover:bg-ink hover:text-paper"
-            >
-              <ZaloIcon /> Nhắn Zalo
+            <Link href="/mau-giao-dien" className={btn.primary}>
+              Xem {templates.length} mẫu giao diện <ArrowRight width={16} height={16} />
+            </Link>
+            <a href={site.zalo} target="_blank" rel="noopener" className={btn.outline}>
+              <ZaloIcon className="text-accent" /> Tư vấn qua Zalo
             </a>
           </div>
-          <p className="mt-5 text-sm text-muted">
-            Hoặc gọi thẳng{' '}
-            <a href={`tel:${site.phone}`} className="font-mono text-ink underline decoration-line underline-offset-4 hover:decoration-accent">
-              {site.phoneDisplay}
-            </a>
-          </p>
         </div>
 
         {/* Ảnh chụp thật từ các mẫu */}
         <div className="relative lg:col-span-6" aria-hidden>
+          <div className="absolute inset-x-[8%] top-[6%] bottom-[2%] rounded-[2rem] bg-accent-soft" />
           <div className="relative mx-auto aspect-[10/8.4] max-w-[560px]">
             <BrowserFrame
-              slug="pickleball"
+              slug="hotel-da-lat"
               alt=""
               className="absolute top-0 right-0 w-[78%] rotate-[1.5deg]"
               sizes="(min-width: 1024px) 440px, 78vw"
             />
             <BrowserFrame
-              slug="clean-service"
+              slug="smart-booking"
               alt=""
               className="absolute bottom-[6%] left-0 w-[80%] -rotate-1"
               sizes="(min-width: 1024px) 450px, 80vw"
               preload
             />
-            <PhoneFrame slug="ban-mat-ong" alt="" className="absolute right-[2%] bottom-0 w-[24%] rotate-[3deg]" sizes="140px" />
+            <PhoneFrame slug="hair-salon-men" alt="" className="absolute right-[2%] bottom-0 w-[24%] rotate-[3deg]" sizes="140px" />
           </div>
-          <p className="mt-4 text-center font-mono text-[11px] text-muted lg:text-right">
-            ↑ ảnh chụp từ mẫu đang chạy, không phải ảnh minh hoạ
-          </p>
         </div>
-      </div>
-
-      <div className="border-y border-line">
-        <ul className="mx-auto grid max-w-6xl grid-cols-2 px-4 sm:px-6 lg:grid-cols-4">
-          {facts.map((f, i) => (
-            <li
-              key={f.label}
-              className={`py-6 pr-4 ${i % 2 === 1 ? 'border-l border-line pl-4 sm:pl-6' : ''} ${
-                i >= 2 ? 'border-t border-line lg:border-t-0' : ''
-              } ${i === 2 ? 'lg:border-l lg:pl-6' : ''}`}
-            >
-              <p className="font-display text-xl font-bold tracking-tight sm:text-2xl">{f.value}</p>
-              <p className="mt-1 text-sm leading-snug text-muted">{f.label}</p>
-            </li>
-          ))}
-        </ul>
       </div>
     </section>
   );
