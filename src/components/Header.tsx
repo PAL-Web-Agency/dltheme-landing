@@ -16,9 +16,11 @@ export function Header() {
   return (
     <header data-track-area="header" className="sticky top-0 z-40 border-b border-line bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <div className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
-        <Link href="/" aria-label={`${site.name} — về trang chủ`}>
+        {/* Thẻ <a> thường (không dùng Link) → bấm logo tải lại trang chủ */}
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- cố ý tải lại trang */}
+        <a href="/" aria-label={`${site.name} — về trang chủ`}>
           <Logo />
-        </Link>
+        </a>
 
         <nav aria-label="Chính" className="hidden md:block">
           <ul className="flex items-center gap-1 text-[0.95rem] font-medium">

@@ -8,7 +8,10 @@ export function Footer() {
     <footer data-track-area="footer" className="bg-deep pb-24 text-white/65 md:pb-0">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-12">
         <div className="md:col-span-5">
-          <Logo light />
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- cố ý tải lại trang */}
+          <a href="/" aria-label={`${site.name} — về trang chủ`} className="inline-block">
+            <Logo light />
+          </a>
           <p className="mt-5 max-w-sm text-sm leading-relaxed">
             Thiết kế website giới thiệu, bán hàng và đặt lịch cho cửa hàng, công ty tại Đắk Lắk và khắp các tỉnh.
           </p>

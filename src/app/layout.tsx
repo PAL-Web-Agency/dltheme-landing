@@ -48,7 +48,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="vi" className={font.variable}>
+    // data-scroll-behavior: cuộn mượt chỉ trong cùng trang (#hoi-dap), chuyển trang thì lên đầu ngay
+    <html lang="vi" className={font.variable} data-scroll-behavior="smooth">
       <body>
         {site.gtmId && (
           <noscript>
